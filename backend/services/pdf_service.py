@@ -124,9 +124,9 @@ class PDFService:
             items_data.append([
                 Paragraph(f"{line.description}", body_style),
                 Paragraph(f"{line.quantity}", ParagraphStyle("C", parent=body_style, alignment=1)),
-                Paragraph(f"₹{line.unit_price:,.2f}", ParagraphStyle("R1", parent=body_style, alignment=2)),
+                Paragraph(f"Rs. {line.unit_price:,.2f}", ParagraphStyle("R1", parent=body_style, alignment=2)),
                 Paragraph(f"{line.tax_rate}%", ParagraphStyle("R2", parent=body_style, alignment=2)),
-                Paragraph(f"₹{line.total_amount:,.2f}", ParagraphStyle("R3", parent=body_style, alignment=2))
+                Paragraph(f"Rs. {line.total_amount:,.2f}", ParagraphStyle("R3", parent=body_style, alignment=2))
             ])
 
         items_table = Table(items_data, colWidths=[3.2*inch, 0.7*inch, 1.1*inch, 0.9*inch, 1.1*inch])
@@ -147,15 +147,15 @@ class PDFService:
 
         # Totals Summary Table
         totals_data = [
-            [Paragraph("Subtotal:", ParagraphStyle("R", parent=body_style, alignment=2)), Paragraph(f"₹{invoice.subtotal:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2))],
-            [Paragraph("Tax Total:", ParagraphStyle("R", parent=body_style, alignment=2)), Paragraph(f"+₹{invoice.tax_amount:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2))],
+            [Paragraph("Subtotal:", ParagraphStyle("R", parent=body_style, alignment=2)), Paragraph(f"Rs. {invoice.subtotal:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2))],
+            [Paragraph("Tax Total:", ParagraphStyle("R", parent=body_style, alignment=2)), Paragraph(f"+Rs. {invoice.tax_amount:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2))],
         ]
         if invoice.discount_amount > 0:
-            totals_data.append([Paragraph("Discount:", ParagraphStyle("R", parent=body_style, alignment=2, textColor=colors.HexColor("#16a34a"))), Paragraph(f"-₹{invoice.discount_amount:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2, textColor=colors.HexColor("#16a34a")))])
+            totals_data.append([Paragraph("Discount:", ParagraphStyle("R", parent=body_style, alignment=2, textColor=colors.HexColor("#16a34a"))), Paragraph(f"-Rs. {invoice.discount_amount:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2, textColor=colors.HexColor("#16a34a")))])
         
-        totals_data.append([Paragraph("<b>Total Amount:</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2)), Paragraph(f"<b>₹{invoice.total_amount:,.2f}</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2))])
-        totals_data.append([Paragraph("Amount Paid:", ParagraphStyle("R", parent=body_style, alignment=2)), Paragraph(f"₹{invoice.amount_paid:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2))])
-        totals_data.append([Paragraph("<b>Balance Due:</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2, textColor=primary_color)), Paragraph(f"<b>₹{invoice.amount_due:,.2f}</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2, textColor=primary_color))])
+        totals_data.append([Paragraph("<b>Total Amount:</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2)), Paragraph(f"<b>Rs. {invoice.total_amount:,.2f}</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2))])
+        totals_data.append([Paragraph("Amount Paid:", ParagraphStyle("R", parent=body_style, alignment=2)), Paragraph(f"Rs. {invoice.amount_paid:,.2f}", ParagraphStyle("R", parent=body_style, alignment=2))])
+        totals_data.append([Paragraph("<b>Balance Due:</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2, textColor=primary_color)), Paragraph(f"<b>Rs. {invoice.amount_due:,.2f}</b>", ParagraphStyle("R", parent=body_style, fontName="Helvetica-Bold", alignment=2, textColor=primary_color))])
 
         totals_table = Table(totals_data, colWidths=[5.5*inch, 1.5*inch])
         totals_table.setStyle(TableStyle([
