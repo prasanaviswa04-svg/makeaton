@@ -22,9 +22,9 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
     { id: 'payments', label: 'Payments & Receipts', icon: CreditCard },
     { id: 'products', label: 'Products & Variants', icon: Package },
     { id: 'plans', label: 'Plans & Policies', icon: Calendar },
+    { id: 'team', label: 'Users & Customers', icon: Users },
     ...(isAdmin ? [
       { id: 'discounts', label: 'Discounts & Taxes', icon: Percent },
-      { id: 'team', label: 'Staff & Team', icon: Users },
     ] : []),
     { id: 'portal', label: 'Customer Portal', icon: Store, isPreview: true },
   ];
