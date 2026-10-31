@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../api';
-import { Check, X, ArrowRight, KeyRound, Mail, Lock, User, Building, Shield, Briefcase, Store } from 'lucide-react';
+import { Check, X, ArrowRight, KeyRound, Mail, Lock, User, Building } from 'lucide-react';
 
 export default function AuthPage() {
-  const { login, signup, switchDemoRole } = useAuth();
+  const { login, signup } = useAuth();
   const [mode, setMode] = useState('login'); // 'login', 'signup', 'forgot', 'reset'
   
   // Login form state
@@ -164,40 +164,7 @@ export default function AuthPage() {
         {/* Right Form Side */}
         <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
           
-          {/* One-Click Demo Personas Bar */}
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
-                Instant Demo Sign-In
-              </span>
-            </div>
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-zinc-100 rounded-lg text-xs mb-6">
-              <button
-                type="button"
-                onClick={() => switchDemoRole('admin')}
-                className="py-1 px-2 rounded-md bg-white text-zinc-800 font-medium border border-zinc-200/60 shadow-2xs hover:bg-zinc-50 transition-colors flex items-center justify-center gap-1.5"
-              >
-                <Shield className="w-3 h-3 text-zinc-500" />
-                <span>Admin</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => switchDemoRole('staff')}
-                className="py-1 px-2 rounded-md bg-white text-zinc-800 font-medium border border-zinc-200/60 shadow-2xs hover:bg-zinc-50 transition-colors flex items-center justify-center gap-1.5"
-              >
-                <Briefcase className="w-3 h-3 text-zinc-500" />
-                <span>Staff Rep</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => switchDemoRole('customer')}
-                className="py-1 px-2 rounded-md bg-white text-zinc-800 font-medium border border-zinc-200/60 shadow-2xs hover:bg-zinc-50 transition-colors flex items-center justify-center gap-1.5"
-              >
-                <Store className="w-3 h-3 text-zinc-500" />
-                <span>Customer</span>
-              </button>
-            </div>
-
             {/* Notifications */}
             {error && (
               <div className="mb-4 p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-lg flex items-center gap-2 animate-in fade-in">

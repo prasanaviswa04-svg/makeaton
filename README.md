@@ -41,8 +41,8 @@ python run_servers.py
 - **Interactive Web App**: [http://localhost:8000](http://localhost:8000)
 - **Interactive Swagger REST API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-### 2. Evaluator Quick Demo Personas
-An **Instant Demo Switcher** is pinned to the top navigation bar and login screen so evaluators can test each persona without manual typing:
+### 2. Standard Personas & Default Credentials
+The following pre-seeded credentials can be used to sign in to test each user role:
 
 | Role | Email | Password | Access Level |
 |---|---|---|---|
